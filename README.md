@@ -1,6 +1,18 @@
 # seedling-position
 
-Get seedling position based on machine vision
+Get seedling position based on machine vision.
+
+## TODO
+
+- 角度矫正
+
+- 计算基准线 X / Y
+
+- 计算单个矩形的参数（半径，圆角半径）
+
+- 标记每个圆角矩形
+
+- 判断是否存在植物
 
 ## Ref
 
