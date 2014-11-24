@@ -2,6 +2,12 @@
 
 Get seedling position based on machine vision.
 
+## 原理
+
+该问题可以被简化成寻找背景并将图片进行二值化。
+可以利用色相与饱和度特征进行寻找。
+通过利用整体信息来减少局部干扰带来的影响。
+
 ## TODO
 
 - 角度矫正

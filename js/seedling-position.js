@@ -32,7 +32,7 @@ var render = function(canvas, pixels) {
 
 // init app
 $(function() {
-    loadImage('sample.jpg').then(function(canvas) {
+    loadImage('small.jpg').then(function(canvas) {
         var ctx = canvas.getContext('2d'),
             width = canvas.width,
             height = canvas.height,
