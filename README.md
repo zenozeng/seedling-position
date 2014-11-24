@@ -2,6 +2,10 @@
 
 Get seedling position based on machine vision.
 
+## Demo
+
+http://zenozeng.github.io/seedling-position/
+
 ## 原理
 
 该问题可以被简化成寻找背景并将图片进行二值化。
