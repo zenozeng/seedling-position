@@ -1,0 +1,12 @@
+body {
+    padding: 2em;
+}
+
+img {
+    max-width: 100%;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: normal;
+}
