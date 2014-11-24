@@ -32,7 +32,7 @@ var render = function(canvas, pixels) {
 
 // init app
 $(function() {
-    loadImage('small.jpg').then(function(canvas) {
+    loadImage('sample.jpg').then(function(canvas) {
         var ctx = canvas.getContext('2d'),
             width = canvas.width,
             height = canvas.height,
@@ -68,22 +68,19 @@ $(function() {
             }
         }
 
+        var horizontalLines = [],
+            verticalLines = [];
+
         // 逐行检查
-        var offset_h = 0;
-        for(var i = 0, len = pixels.length; i < len; i += width * 4) {
+        for(var i = 0; i < height; i++) {
             var count = 0;
-            for(var j = i; j < i + width * 4; j += 4) {
+            for(var j = i * width * 4; j < (i + 1) * width * 4; j += 4) {
                 if(pixels[j] === 0) {
                     count++;
                 }
             }
             if(count / width > 0.8) {
-                offset_h++;
-                for(var j = i; j < i + width * 4; j += 4) {
-                    pixels[j] = 0;
-                    pixels[j + 1] = 0;
-                    pixels[j + 2] = 255;
-                }
+                horizontalLines.push(i);
             }
         }
 
@@ -97,22 +94,38 @@ $(function() {
                 }
             }
             if(count / height > 0.8) {
-                offset_w++;
-                for(var j = i * 4; j < ((height - 1) * width + i) * 4; j += 4 * width) {
-                    pixels[j] = 0;
-                    pixels[j + 1] = 0;
-                    pixels[j + 2] = 255;
-                }
+                verticalLines.push(i);
             }
         }
 
-        // 计算平均大小
-        var w = (width - offset_w) / cols;
-        var h = (height - offset_h) / rows;
+        // 高亮参考线
+        // 仅仅保留连续数组的分割位置
+        console.log(horizontalLines);
+        var getEdges = function(intList) {
+            return intList.filter(function(elem, i, arr) {
+                if(i === 0 || i === arr.length) return false;
+                if(arr[i + 1] !== elem + 1) return true;
+                if(arr[i - 1] === elem - 1) return false;
+                return true;
+            });
+        };
 
-        console.log(w, h);
+        getEdges(horizontalLines).forEach(function(h) {
+            console.log(h);
+            ctx.beginPath();
+            ctx.moveTo(0, h);
+            ctx.lineTo(width - 1, h);
+            ctx.strokeStyle="#0000ff";
+            ctx.stroke();
+        });
 
-        render(canvas, pixels);
+        getEdges(verticalLines).forEach(function(w) {
+            ctx.beginPath();
+            ctx.moveTo(w, 0);
+            ctx.lineTo(w, height - 1);
+            ctx.strokeStyle="#0000ff";
+            ctx.stroke();
+        });
     });
 });
 
