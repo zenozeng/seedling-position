@@ -79,7 +79,7 @@ $(function() {
                     count++;
                 }
             }
-            if(count / width > 0.8) {
+            if(count / width > 0.75) {
                 horizontalLines.push(i);
             }
         }
@@ -93,7 +93,7 @@ $(function() {
                     count++;
                 }
             }
-            if(count / height > 0.8) {
+            if(count / height > 0.7) {
                 verticalLines.push(i);
             }
         }
