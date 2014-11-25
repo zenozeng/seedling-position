@@ -115,7 +115,7 @@ $(function() {
             ctx.beginPath();
             ctx.moveTo(0, h);
             ctx.lineTo(width - 1, h);
-            ctx.strokeStyle="#0000ff";
+            ctx.strokeStyle="#fff";
             ctx.stroke();
         });
 
@@ -123,7 +123,7 @@ $(function() {
             ctx.beginPath();
             ctx.moveTo(w, 0);
             ctx.lineTo(w, height - 1);
-            ctx.strokeStyle="#0000ff";
+            ctx.strokeStyle="#fff";
             ctx.stroke();
         });
     });
